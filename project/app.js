@@ -27,9 +27,13 @@ app.get('/', (req, res) => {
 
 // get all the books
 app.get('/books', (req, res) => {
+    // query parameter(?=) to perform simple pagination
+    // console.log(req.query);
+    let page = req.query.p || 0;
+    let booksPerPage = req.query.l || 3;
     let books = []
     // this returns an iterator/cursor where we can use toArray or forEach method (coding differs than the terminal behaviour)
-    db.collection('books').find().sort({rating:-1})
+    db.collection('books').find().sort({rating:-1}).skip(page * booksPerPage).limit(parseInt(booksPerPage))
     .forEach((book) => books.push(book))
     .then(() => {
         res.status(200)

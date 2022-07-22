@@ -82,6 +82,15 @@ mongoimport --uri="mongodb+srv://<your username>:<your password>@<your cluster>.
 - **push** -> pushes a value from an array property
 - **each** -> push multiple values from an array property
 
+## find stats related a query
+
+` db.<collection name>.find({query}).explain('executionStats')`
+
+## working with Indexes
+- **create an index** :- `db.<collection name>.createIndex({key : value})`
+- **list all the indexes** :- `db.<collection name>.getIndexes()`
+- **drop an index** :- `db.<collection name>.dropIndex({key : value})`
+
 ## exit the shell
 
 `exit`
