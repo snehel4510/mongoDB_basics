@@ -1,9 +1,12 @@
 const { ObjectID } = require('bson');
 const express = require('express');
 const { connectToDb, getDb } = require('./db');
+const morgan = require('morgan');
 
 const app = express();
 
+// middleware to dislplay request imformation
+app.use(morgan('dev'));
 // middleware to parse json to use it in request body to handle post requests
 app.use(express.json());
 
